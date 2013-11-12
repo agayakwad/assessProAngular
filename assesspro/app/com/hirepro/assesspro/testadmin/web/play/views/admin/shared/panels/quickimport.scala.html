@@ -1,0 +1,18 @@
+@(importAction : play.api.mvc.Call)
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <i class="glyphicon glyphicon-upload"></i>
+      <i class="glyphicon glyphicon-wrench pull-right"></i>
+      &nbsp;&nbsp;Quick Test Import
+    </div>
+  </div>
+  <div class="panel-body">
+    @helper.form(action = importAction, 'enctype -> "multipart/form-data") {
+    <div class="form-group">
+      <label for="exampleInputFile">Select the zip file</label>
+      <input type="file" name="package">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  }
+    </div>

@@ -1,0 +1,81 @@
+@(candidateId: Long, testId: Long)
+
+@import helper._
+@import com.hirepro.assesspro.testserver.web.play.views.html.layout
+
+@block = {
+    <script type="text/javascript" language="javascript">var testIdForCandidate = @testId;
+    var candidateIdForTest = @candidateId;
+    </script>
+    <div class="subcontainer">
+        <div class="inner_con_left">
+            <div class="inner_pad_a" style="padding: 0 20px 10px 20px;">
+                <button name="submit_btn" type="button" id="submit_btn" style="width: 230px; height: 40px;
+                                font-size: 18px; float: right; margin-right: 5px; line-height: 44px; display: none;"">
+                Submit Test</button>
+            </div>
+        </div>
+        <div class="inner_con_right">
+            <div class="inner_pad_a">
+                <div id="start_test_img" style="margin-right: 5px; text-align: right;">
+                    <img id="imgLoadTest" src="" alt="" />
+                </div>
+                <div id="FlagButtonDiv" style="height: 80px; overflow: auto;">
+                </div>
+                <div id="modalChooseGroup" style="display: none;">
+                </div>
+                <div id="modalPreviewGroup" style="display: none;">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@topContent ={
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <h1 id="headerTextRight">
+                    Answer</h1>
+            </td>
+            <td>
+                <button name="clearAnswer" style="display: none;" type="button" id="clearAnswer">
+                    Un Answer</button>
+            </td>
+        </tr>
+    </table>
+}
+
+@midContent ={
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <h1 id="headerTextLeft">
+                    Question No :</h1>
+            </td>
+            <td align="right">
+                <img src="" alt="" id="toolTipIMg" />
+                <button name="btnQuestionPreview" id="btnQuestionPreview" style="display: none;"
+                type="button">
+                    Show Question Preview</button>
+                <button name="flagUnflag" id="flagUnflag" style="display: none;"
+                type="button">
+                    Flag/Unflag Question</button>
+                <button name="btnBack" id="btnBack" style="display: none;"
+                type="button">
+                    Previous</button>
+                <button name="btnNext" id="btnNext" style="display: none;"
+                type="button">
+                    Next</button>
+            </td>
+        </tr>
+    </table>
+}
+@layout.base("- Test",lowerBlock = block, javascripts = Seq("test"), topContent = topContent, midContent = midContent){
+
+    <div id="optionsDiv" style="overflow: auto; font-weight: bold;">
+        <div id="optionsTable" style="width: 100%;">
+        </div>
+    </div>
+
+}
+

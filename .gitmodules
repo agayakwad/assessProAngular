@@ -1,0 +1,3 @@
+[submodule "modules/playbase"]
+	path = modules/playbase
+	url = https://github.com/diwa/playbase.git

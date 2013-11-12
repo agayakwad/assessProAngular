@@ -1,0 +1,11 @@
+Assessment Server
+
+To sync the project, do the following
+
+  1. git clone <project>
+      Go into the project folder
+  2. git submodule init
+  3. git submodule update
+
+Alternatively, you can also try
+git clone --recursive <project>

@@ -1,0 +1,69 @@
+@(loginForm: Form[(String,String,String)])
+
+@import com.hirepro.assesspro.testserver.web.play.controllers.authentication.{ routes => sessionRoute}
+@import com.hirepro.assesspro.testserver.web.play.views.html.layout
+@import helper._
+
+@topContent = {
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <h1 id="headerTextRight">
+                    Login</h1>
+            </td>
+        </tr>
+    </table>
+}
+
+@midContent = {
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <h1 id="headerTextLeft" runat="server">
+                    Online Assessment</h1>
+            </td>
+        </tr>
+    </table>
+}
+@layout.base("- Login", topContent = topContent, midContent = midContent){
+
+  @form(sessionRoute.Sessions.authenticate()) {
+      <div id="candidate_login_div" style="overflow: auto; height: 192px;">
+          <h1 style="visibility: hidden;">&nbsp;</h1>
+      @inputText(
+        loginForm("login"),
+        '_label -> "Username:",
+        '_class -> "login"
+      )
+      @inputPassword(
+        loginForm("password"),
+        '_label -> "Password:",
+        '_class -> "login"
+      )
+      @inputText(
+        loginForm("alias"),
+        '_label -> "Alias:",
+        '_class -> "login"
+      )
+      <dl>
+          <dt style="width:120px;"></dt>
+          <dd>
+              <input name="Login" id="login_btn" type="Submit" role="button" aria-disabled="false" value="Login"/>
+          </dd>
+      </dl>
+      <dl>
+          <dd>
+          	@if(loginForm.errors.length > 0) {
+              <span id="error_msg" style="color: Red;">@loginForm.errors(0).message</span><br/>
+              }
+          </dd>
+      </dl>
+      <dl>
+          <dt class="login">
+              <span id="success_msg" class="color_a">&nbsp;</span>
+          </dt>
+      </dl>
+    </div>
+  }
+  <div id="aboutCompanyInfo1" style="display: none;">&nbsp;</div>
+}

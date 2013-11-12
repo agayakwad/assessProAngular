@@ -1,0 +1,38 @@
+@(tenants: Seq[com.hirepro.assesspro.common.business.domain.models.Tenant],
+testUsers: Seq[com.hirepro.assesspro.common.business.domain.models.User],
+alltests: Seq[com.hirepro.assesspro.common.business.domain.models.Test])(implicit flash: Flash)
+
+@import com.hirepro.assesspro.testadmin.web.play.helpers.AdminHelper
+@import com.hirepro.assesspro.testadmin.web.play.views.html.layout.base
+@import com.hirepro.assesspro.testadmin.web.play.views.html.helpers.tags.wflash
+
+@base("Assesspro Admin", Seq("datatables/initializer", "datatables/users", "datatables/tests")) {
+<div class="container">
+  <div class="row">
+    <div class="alerts">
+      @wflash(flash)
+    </div>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabusers" data-toggle="tab">Users</a></li>
+        <li><a href="#tabtests" data-toggle="tab">Tests</a></li>
+        <li><a href="#tabtenants" data-toggle="tab">Tenants</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tabusers">
+          <p></p>
+          @shared.users(testUsers, AdminHelper.idNameMapforTest(alltests))
+        </div>
+        <div class="tab-pane" id="tabtests">
+          <p></p>
+          @shared.tests(alltests, AdminHelper.idNameMapForTenant(tenants))
+        </div>
+        <div class="tab-pane" id="tabtenants">
+          <p></p>
+          @shared.tenants(tenants)
+        </div>
+      </div><!-- /.tab-content -->
+    </div><!-- /.tabbable -->
+  </div>
+</div>
+}

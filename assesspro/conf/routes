@@ -1,0 +1,26 @@
+GET    /login                                   @com.hirepro.assesspro.testserver.web.play.controllers.authentication.Sessions.login
+POST   /login                                   @com.hirepro.assesspro.testserver.web.play.controllers.authentication.Sessions.authenticate
+
+GET    /test/:candidateId/:testId               @com.hirepro.assesspro.testserver.web.play.controllers.Tests.test(candidateId: Long, testId: Long)
+GET    /questionPaper/:id                       @com.hirepro.assesspro.testserver.web.play.controllers.Tests.questionPaper(id: Long)
+GET    /getquestionPaper/:testId/:candidateId   @com.hirepro.assesspro.testserver.web.play.controllers.Tests.getQuestionPaperByTestAndCandidateId(testId: Long, candidateId: Long)
+
+POST   /submit                                  @com.hirepro.assesspro.testserver.web.play.controllers.Responses.submit
+GET    /submission                              @com.hirepro.assesspro.testserver.web.play.controllers.Responses.submission
+
+POST   /import                                  @com.hirepro.assesspro.testadmin.web.play.controllers.ImportExport.importData
+GET    /exportTest/:testId                      @com.hirepro.assesspro.testadmin.web.play.controllers.ImportExport.exportTestData(testId: Long)
+GET    /enablePassword/:candidateId/:testId     @com.hirepro.assesspro.testadmin.web.play.controllers.ImportExport.enablePassword(candidateId: Long, testId: Long)
+
+GET    /admin                                   @com.hirepro.assesspro.testadmin.web.play.controllers.Admin.index
+GET    /admin/admin                             @com.hirepro.assesspro.testadmin.web.play.controllers.Admin.admin
+ 
+# Home page
+GET    /                                        com.tuplejump.playYeoman.Yeoman.redirectRoot(base="/ui/")
+ 
+GET    /ui                                      com.tuplejump.playYeoman.Yeoman.index 
+
+->     /ui/                                     yeoman.Routes  
+
+GET    /webjars/*file                           controllers.WebJarAssets.at(file)
+GET    /assets/*file                            controllers.Assets.at(path="/public", file)

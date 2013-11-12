@@ -1,0 +1,37 @@
+@(tenants: Seq[com.hirepro.assesspro.common.business.domain.models.Tenant],
+testUsers: Seq[com.hirepro.assesspro.common.business.domain.models.User],
+tests: Seq[com.hirepro.assesspro.common.business.domain.models.Test])(implicit flash: Flash)
+
+@import com.hirepro.assesspro.testadmin.web.play.views.html.layout.base
+@import com.hirepro.assesspro.testadmin.web.play.controllers.{ routes => testAdminroutes}
+@import com.hirepro.assesspro.testadmin.web.play.views.html.helpers.tags.wflash
+
+@base("Assesspro Admin") {
+
+<div class="container">
+  <div class="alerts">
+    @wflash(flash)
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="#"><strong><span class="glyphicon glyphicon-dashboard"></span> My Dashboard</strong></a>
+      <a title="Add Widget" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus-sign"></span>
+        Add Widget</a>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            @shared.panels.quickstatus(tenants, testUsers, tests)
+            @shared.panels.upcomingtests()
+            @shared.panels.recentactivity()
+          </div>
+          <div class="col-md-6">
+            @shared.panels.systemstats()
+            @shared.panels.quickimport(testAdminroutes.ImportExport.importData())
+
+          </div>
+        </div>
+      </div><!--/row-->
+    </div><!--/col-md-12-->
+  </div>
+</div>
+}

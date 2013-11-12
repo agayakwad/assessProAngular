@@ -1,0 +1,44 @@
+@()
+
+@import com.hirepro.assesspro.testserver.web.play.views.html.layout
+
+@topContent ={
+    <div style="margin-top: 25px;">
+    </div>
+    <div class="ui-widget ui-widget-content ui-corner-all inner_pad_c">
+        <div id="submission_right_div">
+            <a isscoreloaded="false" name="btnViewResult"
+            id="btnViewResult" role="button" aria-disabled="false" type="button">View Result</a>
+        </div>
+    </div>
+}
+
+@midContent ={
+    <table width="99%" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td>
+                <h1 id="ctl00_DefaultContent_headerTextLeft">
+                    Test Submission
+                </h1>
+            </td>
+        </tr>
+    </table>
+}
+@block ={
+    <div id="ctl00_DefaultContent_contentTextLeft" style="min-width:550px">
+        <h1>
+            You have successfully submitted the Online Test</h1>
+        <br />
+        <h2>
+            It is now safe to close or navigate away from the current window.</h2>
+        <div class="inner_pad_a" id="divInstantResult">
+            <span style="display: none;" id="spanLoadingQuestionPaper">Loading<img src="assets/images/ajax-loader1.gif" /></span>
+        </div>
+    </div>
+}
+@layout.base("- Submit", javascripts = Seq("submit"),lowerBlock = block, topContent = topContent, midContent = midContent){
+    <div id="submission_right_div">
+        <a isscoreloaded="false" name="btnViewResult"
+        id="btnViewResult" role="button" aria-disabled="false" type="button" style="display:none">View Result</a>
+    </div>
+}

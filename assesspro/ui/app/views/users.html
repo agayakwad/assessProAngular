@@ -1,0 +1,28 @@
+ <div class="col-md-12">
+  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+    <thead> 
+        <tr>
+          <td><b>Candidate ID</b></td>
+          <td><b>User Name</b></td>
+          <td><b>Email</b></td>
+          <td><b>Test</b></td>
+          <td><b>Login</b></td>
+          <td><b>Logout</b></td>
+          <td><b>Actions</b></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="us in users">
+           <td>{{us.CandidateId}}</td>
+           <td>{{us.CandidateName}}</td>
+           <td>{{us.EMail}}</td>
+           <td>{{us.TestTypeId}}</td>
+           <td>{{us.LoginId}}</td>
+           <td>{{us.LogOutTime}}</td>
+           <td><a href="#">
+              <i class="glyphicon glyphicon-edit"></i></a>
+            </td>
+        </tr>         
+      </tbody>
+  </table>
+</div>

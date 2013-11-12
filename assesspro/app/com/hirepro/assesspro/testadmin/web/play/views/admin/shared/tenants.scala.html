@@ -1,0 +1,7 @@
+@(tenants: Seq[com.hirepro.assesspro.common.business.domain.models.Tenant])
+
+@for(tenant <- tenants; counter = 0) {
+<div class="col-md-4">
+  @panels.tenant(tenant)
+</div>
+}

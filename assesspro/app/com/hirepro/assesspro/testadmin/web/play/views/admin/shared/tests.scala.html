@@ -1,0 +1,38 @@
+@(tests: Seq[com.hirepro.assesspro.common.business.domain.models.Test],
+tenantNameMap: Map[Long,String])
+
+@import com.hirepro.assesspro.testadmin.web.play.helpers.AdminHelper
+@import com.hirepro.assesspro.testadmin.web.play.helpers.DateTimeHelper
+@import com.hirepro.assesspro.testserver.web.play.controllers.{ routes => testServerRoutes}
+@import com.hirepro.assesspro.testadmin.web.play.controllers.{ routes => testAdminRoutes}
+
+<div class="col-md-12">
+  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="tests">
+    <thead>
+      <tr>
+        <tr>
+          <td><b>Test Id</b></td>
+          <td><b>Name</b></td>
+          <td><b>Tenant</b></td>
+          <td><b>Actions</b></td>
+        </tr>
+      </thead>
+      <tbody>
+        @for(test <- tests) {
+        <tr class="@AdminHelper.classForTestTable(test)">
+          <td>@test.id</td>
+          <td>@test.name</td>
+          <td style="white-space : nowrap ; overflow : hidden ; text-overflow : ellipsis"><a href="#">@tenantNameMap.get(test.tenantId)</a></td>
+          <td style="white-space : nowrap ; overflow : hidden ; text-overflow : ellipsis">
+           <a href="@testServerRoutes.Tests.getQuestionPaperByTestAndCandidateId(test.id.get,0)">
+            <i class="glyphicon glyphicon-paperclip"></i>
+          </a>
+          <a href="@testAdminRoutes.ImportExport.exportTestData(test.id.get)">
+            <i class="glyphicon glyphicon-export"></i>
+          </a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+</div><!--/col-md-12-->
